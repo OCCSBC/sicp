@@ -1,0 +1,15 @@
+; new-if is a function and its arguments will be evaluated before the predicate.
+
+(sqrt 10)
+(sqrt-iter 1.0 10)
+(new-if (good-enough? 1.0 10)
+        1.0
+        (sqrt-iter (improve 1.0 10)
+                   10))
+(new-if #f
+        1.0
+        (new-if (good-enough? 1.0 10)
+                1.0
+                (sqrt-iter (improve 1.0 10)
+                           10)))
+; infinite loop when evaluating sqrt-iter
