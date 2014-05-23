@@ -1,0 +1,37 @@
+phi = (1 + sqrt(5)) / 2
+psi = (1 - sqrt(5)) / 2
+
+When n=0, Fib(0) is 0 by definition.
+  (phi^0 - psi^0) / sqrt(5)
+= (1 - 1) / sqrt(5)
+= 0
+
+When n=1, Fib(1) is 1 by definition.
+  (phi^1 - psi^1) / sqrt(5)
+= (1/2 + sqrt(5)/2 - 1/2 + sqrt(5)/2) / sqrt(5)
+= sqrt(5) / sqrt(5)
+= 1
+
+Suppose 
+  Fib(k)   = (phi^k - psi^k) / sqrt(5),
+  Fib(k+1) = (phi^(k+1) - psi^(k+1)) / sqrt(5)
+
+Fib(k+2) = Fib(k+1) + Fib(k) by definition.
+         = (phi^(k+1)-psi^(k+1)) / sqrt(5) + (phi^k-psi^k) / sqrt(5)
+         = (phi^(k+1) + phi^k) / sqrt(5) - (psi^(k+1) + psi^k) / sqrt(5)
+         = (phi^(k+1) + phi^(k+1)/phi) / sqrt(5) - (psi^(k+1) + psi^(k+1)/psi) / sqrt(5)
+         = phi^(k+1)(1+1/phi) / sqrt(5) - psi^(k+1)(1+1/psi) / sqrt(5)
+         = (phi^(k+1) / sqrt(5)) x (1+sqrt(5) + 2)/(1+sqrt(5)) - (psi^(k+1) / sqrt(5)) x (1-sqrt(5) + 2)/(1-sqrt(5))
+         = (phi^(k+1) / sqrt(5)) x (3+sqrt(5))(1-sqrt(5)/(1-5) - (psi^(k+1) / sqrt(5)) x (3-sqrt(5))(1+sqrt(5)/(1-5)
+         = (phi^(k+1) / sqrt(5)) x (-2sqrt(5)-2)/(-4) - (psi^(k+1) / sqrt(5)) x (-2+2sqrt(5))/(-4)
+         = (phi^(k+1) / sqrt(5)) x (1+sqrt(5))/2 - (psi^(k+1) / sqrt(5)) x (1-sqrt(5))/2
+         = (phi^(k+2) / sqrt(5)) - (psi^(k+2) / sqrt(5))
+
+By induction, we can say Fib(n) = (phi^n - psi^n) / sqrt(5)
+
+phi^n/sqrt(5) - Fib(n) = psi^n/sqrt(5)
+psi ~= -0.6180...
+=> |psi^n| < 1
+=> |psi^n|/sqrt(5) = |psi^n|/2.2360 < 0.5
+
+Fib(n) is closest integer from phi^n/sqrt(5)... am I supposed to prove by scheme??
