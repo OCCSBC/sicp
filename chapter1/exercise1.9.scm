@@ -4,7 +4,7 @@
       (inc (+ (dec a) b))))
 
 (+ 2 3)
-(inc (+ (1 3)))
+(inc (+ 1 3))
 (inc (inc (+ 0 3)))
 (inc (inc 3))
 (inc 4)
