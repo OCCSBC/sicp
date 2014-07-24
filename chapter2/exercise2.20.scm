@@ -7,17 +7,23 @@
 (define (append-car list1 item)
   (append-list list1 (list (car item))))
 
-(define (same-parity-itr list1 list2)
-  (cond ((null? list1) list2)
-        ((null? (cdr list1)) (append-car list2 list1))
-        (else (same-parity-itr (cdr (cdr list1)) (append-car list2 list1)))))
+(define (is-same-parity a b)
+  (= (remainder a 2) (remainder b 2)))
 
+(define (same-parity-itr item0 list1 list2)
+  (cond ((null? list1) list2)
+        ((is-same-parity item0 (car list1)) (same-parity-itr item0 (cdr list1) (append-car list2 list1)))
+        (else (same-parity-itr item0 (cdr list1) list2))))
+ 
 (define (same-parity . w)
-  (same-parity-itr w (list)))
+  (cond ((null? w) w)
+        (else (same-parity-itr (car w) w (list)))))
 
 (same-parity 1 2 3 4 5 6)
 (same-parity 1 2 3 4 5 6 7)
 (same-parity 1 2)
+(same-parity 1 2 3 4 5 7 8 9)
 (same-parity 1)
+(same-parity 2 3 4 5 6)
+(same-parity 2 4 5 6 7)
 (same-parity)
-
